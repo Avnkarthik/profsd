@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Boxes</title>
+    <style>
+        .container {
+            position: absolute;
+            right: 0px;
+            top: 400px;
+            display: inline-flex;
+           
+            gap: 10px;
+            padding: 20px;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box" value="1" id="one">1</div>
+        <div class="box" value="2" id="two">2</div>
+        <div class="box" value="3" id="three">3</div>
+        <div class="box" value="4" id="four" >4</div>
+        <div class="box" value="5" id="five">5</div>
+        <div class="box" value="6" id="six">6</div>
+        <div class="box" value="7" id="seven">7</div>
+        <div class="box" value="8" id="eight">8</div>
+        <div class="box" value="9" id="nine">9</div>
+        <div class="box" value="10" id="ten">10</div>
+    </div>
+    <button onclick="bsearch()">Binarysearch</button>
+    <label>Enter number to search</label>
+    <input type="number" max="10" min="1"></input>
+    <script type="text/javascript">
+       
+        function bsearch(){
+
+          
+        
+         // box.style.backgroundColor="lightblue";
+          let num = document.querySelector('input').value;
+ 
+         
+          let dic={1:"one",2:"two",3:"three",4:"four",5:"five",6:"six",7:"seven",8:"eight",9:"nine",10:"ten"};
+          var i=1,j=10;
+          let idnum=dic[num];
+          while(i<=j){
+            var mid=Math.floor((i+j)/2);
+            let midnum=dic[mid];
+            var ele=document.getElementById(midnum);
+            ele.style.backgroundColor="yellow";
+            
+            //var mid=Math.floor((i+j)/2);
+         
+            if(mid==num){
+                
+              
+                let found=document.getElementById(idnum);
+             
+                found.style.backgroundColor="green";
+                break;
+                
+            }
+            else if(mid<num){
+               i=mid+1;
+                
+          }else
+            j=mid-1;
+
+
+        }
+    }
+
+    </script>
+</body>
+</html>
