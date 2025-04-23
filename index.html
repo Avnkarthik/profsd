@@ -23,6 +23,22 @@
             justify-content: center;
             font-weight: bold;
             border: 2px solid black;
+            position: relative;
+        }
+        .btn{
+            height: 50px;
+            width: 150px;
+        }
+        .label{
+            display: block;
+            font-family: verdana;
+            font-size: 20px;
+
+        }
+        .input{
+            border: 2px solid darkblue;
+            height: 30px;
+            width: 150px;
         }
     </style>
 </head>
@@ -39,14 +55,14 @@
         <div class="box" value="9" id="nine">9</div>
         <div class="box" value="10" id="ten">10</div>
     </div>
-    <button onclick="bsearch()">Binarysearch</button>
-    <label>Enter number to search</label>
-    <input type="number" max="10" min="1"></input>
+    <button onclick="bsearch()" class="btn" >Binarysearch</button>
+    <label class="label">Enter number to search</label>
+    <input type="number" max="10" min="1" class="input"></input>
     <script type="text/javascript">
        
-        function bsearch(){
+       async function bsearch(){
 
-          
+        
         
          // box.style.backgroundColor="lightblue";
           let num = document.querySelector('input').value;
@@ -55,13 +71,19 @@
           let dic={1:"one",2:"two",3:"three",4:"four",5:"five",6:"six",7:"seven",8:"eight",9:"nine",10:"ten"};
           var i=1,j=10;
           let idnum=dic[num];
+          function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
           while(i<=j){
             var mid=Math.floor((i+j)/2);
+           
             let midnum=dic[mid];
+            let pos=document.getElementById(midnum);
             var ele=document.getElementById(midnum);
             ele.style.backgroundColor="yellow";
-            
+             pos.style.top="-50px";
             //var mid=Math.floor((i+j)/2);
+           
          
             if(mid==num){
                 
@@ -69,6 +91,9 @@
                 let found=document.getElementById(idnum);
              
                 found.style.backgroundColor="green";
+                await delay(1000);
+           pos.style.top="0px";
+           ele.style.backgroundColor="lightblue";
                 break;
                 
             }
@@ -77,9 +102,14 @@
                 
           }else
             j=mid-1;
-
-
+         
+           
+           await delay(1000);
+           pos.style.top="0px";
+           ele.style.backgroundColor="lightblue";
+            
         }
+        document.getElementsByClassName("input")[0].value="";
     }
 
     </script>
